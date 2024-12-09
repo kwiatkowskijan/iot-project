@@ -5,8 +5,8 @@
 #include <time.h>
 
 // WiFi credentials
-const char *ssid = "Marcinkowskiego";              // Replace with your WiFi name
-const char *password = "Tadeusz1234";              // Replace with your WiFi password
+const char *ssid = "your-wifi";              // Replace with your WiFi name
+const char *password = "your-wifi-passwd";              // Replace with your WiFi password
 
 // MQTT Broker settings
 const int mqtt_port = 8883;                         // MQTT port (TLS)
