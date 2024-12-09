@@ -9,11 +9,11 @@ const char *ssid = "your-wifi";                     // Replace with your WiFi na
 const char *password = "your-wifi-passwd";          // Replace with your WiFi password
 
 // MQTT Broker settings
-const int mqtt_port = 8883;                         // MQTT port (TLS)
-const char *mqtt_broker = "broker.emqx.io";         // EMQX broker endpoint
-const char *mqtt_topic = "iot";                     // MQTT topic
-const char *mqtt_username = "wojti";                // MQTT username for authentication
-const char *mqtt_password = "Wojti1234";            // MQTT password for authentication
+const int mqtt_port = 8883;                         
+const char *mqtt_broker = "broker.emqx.io";         
+const char *mqtt_topic = "iot";                     
+const char *mqtt_username = "wojti";                
+const char *mqtt_password = "Wojti1234";            
 
 // NTP Server settings
 const char *ntp_server = "pool.ntp.org";            // Default NTP server
