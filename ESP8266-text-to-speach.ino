@@ -5,23 +5,23 @@
 #include <time.h>
 #include <BearSSLHelpers.h>
 
-// Ustawienia WiFi
-const char *ssid = "your-wifi";  // Nazwa sieci WiFi
-const char *password = "your-wifi-psswd";  // Hasło WiFi
+// WiFi credentials
+const char *ssid = "your-wifi";                // Replace with your WiFi name
+const char *password = "your-wifi-psswd";      // Replace with your WiFi password
 
-// Ustawienia MQTT
-const char *mqtt_broker = "broker.emqx.io";  // Adres brokera MQTT
-const int mqtt_port = 8883;                  // Port MQTT (TLS)
-const char *mqtt_topic = "iot";              // Temat MQTT
-const char *mqtt_username = "wojti";         // Nazwa użytkownika MQTT
-const char *mqtt_password = "Wojti1234";     // Hasło MQTT
+// MQTT Broker settings
+const char *mqtt_broker = "broker.emqx.io";    
+const int mqtt_port = 8883;                    
+const char *mqtt_topic = "iot";                
+const char *mqtt_username = "wojti";           
+const char *mqtt_password = "Wojti1234";       
 
 // NTP Server settings
-const char *ntp_server = "pool.ntp.org";  // Default NTP server
-const long gmt_offset_sec = 0;            // GMT offset in seconds (adjust for your time zone)
-const int daylight_offset_sec = 0;        // Daylight saving time offset in seconds
+const char *ntp_server = "pool.ntp.org";       // Default NTP server
+const long gmt_offset_sec = 0;                 // GMT offset in seconds (adjust for your time zone)
+const int daylight_offset_sec = 0;             // Daylight saving time offset in seconds
 
-// Certyfikat SSL dla brokera MQTT
+// SSL certificate for MQTT broker
 static const char ca_cert[] PROGMEM = R"EOF(
 -----BEGIN CERTIFICATE-----
 MIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh
@@ -47,12 +47,11 @@ CAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=
 -----END CERTIFICATE-----
 )EOF";
 
-// Obiekty
+// Objects
 BearSSL::WiFiClientSecure espClient;
 PubSubClient mqtt_client(espClient);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-// Funkcja łączenia z WiFi
 void connectToWiFi() {
   WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi...");
@@ -73,7 +72,6 @@ void syncTime() {
   Serial.println("Time synchronized");
 }
 
-// Funkcja łączenia z brokerem MQTT
 void connectToMQTT() {
   BearSSL::X509List serverTrustedCA(ca_cert);
   espClient.setTrustAnchors(&serverTrustedCA);
@@ -92,7 +90,6 @@ void connectToMQTT() {
   }
 }
 
-// Funkcja callback dla odbierania wiadomości
 void mqttCallback(char *topic, byte *payload, unsigned int length) {
   Serial.print("Message received on topic: ");
   Serial.println(topic);
@@ -113,20 +110,17 @@ void mqttCallback(char *topic, byte *payload, unsigned int length) {
 void setup() {
   Serial.begin(115200);
 
-  // Inicjalizacja LCD
   lcd.init();
   lcd.begin(16, 2);
   lcd.backlight();
   lcd.print("Connecting...");
 
-  // Połączenie z WiFi
   connectToWiFi();
   syncTime();
-  // Konfiguracja MQTT
+
   mqtt_client.setServer(mqtt_broker, mqtt_port);
   mqtt_client.setCallback(mqttCallback);
 
-  // Połączenie z brokerem MQTT
   connectToMQTT();
 
   lcd.clear();
