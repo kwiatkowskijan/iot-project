@@ -6,8 +6,8 @@
 #include <BearSSLHelpers.h>
 
 // Ustawienia WiFi
-const char *ssid = "Marcinkowskiego";  // Nazwa sieci WiFi
-const char *password = "Tadeusz1234";  // Hasło WiFi
+const char *ssid = "your-wifi";  // Nazwa sieci WiFi
+const char *password = "your-wifi-psswd";  // Hasło WiFi
 
 // Ustawienia MQTT
 const char *mqtt_broker = "broker.emqx.io";  // Adres brokera MQTT
