@@ -28,3 +28,5 @@ Wymagania systemowe:
  - Docker Engine i Docker Compose.
  - Python 3.8 lub nowszy.
  - Arduino IDE do obsługi ESP8266.
+
+Autorzy: Jan Kwiatkowski @kwiatkowksijan, Wojciech Jakubiak @Olesz96
