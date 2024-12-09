@@ -1,5 +1,3 @@
-Dokumentacja Projektu IoT
-
 Opis Projektu:
 Projekt IoT składa się z kilku zintegrowanych komponentów, które współpracują w celu pomiaru, przetwarzania i wyświetlania danych w czasie rzeczywistym. 
 Zostały one stworzone przy pomocy różnych technologii, takich jak ESP8266, MQTT, Docker, Python oraz narzędzia AI (Whisper).
