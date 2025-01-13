@@ -1,32 +1,32 @@
-Opis Projektu:
-Projekt IoT składa się z kilku zintegrowanych komponentów, które współpracują w celu pomiaru, przetwarzania i wyświetlania danych w czasie rzeczywistym. 
-Zostały one stworzone przy pomocy różnych technologii, takich jak ESP8266, MQTT, Docker, Python oraz narzędzia AI (Whisper).
+Project Description:  
+The IoT project consists of several integrated components that work together to measure, process, and display real-time data. These components were created using various technologies such as ESP8266, MQTT, Docker, Python, and AI tools (Whisper).
 
-Główne funkcje projektu:
-1. Pomiar temperatury:
-- Czujnik DS18B20 podłączony do ESP8266 dokonuje pomiaru temperatury.
-- Wynik wyświetlany jest w terminalu Arduino oraz wysyłany do brokera MQTT.
-- Broker MQTT przesyła dane do InfuixDB, który działa na Dockerze.
-2. Przetwarzanie danych:
-- Python subscriber subskrybuje dane z MQTT i zapisuje je w bazie InfluxDB.
-- Dane temperaturowe są wizualizowane przy użyciu Grafany.
-3. Przetwarzanie mowy (speech-to-text):
-- Program wykorzystujący model Whisper konwertuje tekst mówiony na tekst pisany.
-- Tekst jest wysyłany do brokera MQTT, a ESP8266 odbiera go i wyświetla na wyświetlaczu LCD (górna linia).
-Wymagania i Konfiguracja Środowiska
+Main Features of the Project:  
+1. Temperature Measurement:  
+   - The DS18B20 sensor connected to the ESP8266 measures the temperature.  
+   - The result is displayed on the Arduino terminal and sent to the MQTT broker.  
+   - The MQTT broker forwards the data to InfluxDB, running on Docker.  
+2. Data Processing:  
+   - A Python subscriber subscribes to the data from MQTT and saves it in the InfluxDB database.  
+   - Temperature data is visualized using Grafana.  
+3. Speech Processing (Speech-to-Text):  
+   - A program using the Whisper model converts spoken words into written text.  
+   - The text is sent to the MQTT broker, and the ESP8266 receives and displays it on the LCD screen (top line).  
 
-Technologie:
-- ESP8266 z czujnikiem DS18B20 oraz wyświetlaczem LCD.
-- MQTT broker z autoryzacją (nazwa użytkownika, hasło, TLS).
-- Docker (InfluxDB, Grafana).
-- Python z bibliotekami:
-   - paho-mqtt (dla MQTT).
-   - influxdb-client (dla zapisu danych do InfluxDB).
-   - Whisper (speech-to-text).
-   
-Wymagania systemowe:
- - Docker Engine i Docker Compose.
- - Python 3.8 lub nowszy.
- - Arduino IDE do obsługi ESP8266.
+Environment Requirements and Configuration  
 
-Autorzy: Jan Kwiatkowski @kwiatkowksijan, Wojciech Jakubiak @Olesz96
+Technologies:  
+- ESP8266 with DS18B20 sensor and LCD display.  
+- MQTT broker with authentication (username, password, TLS).  
+- Docker (InfluxDB, Grafana).  
+- Python with libraries:  
+   - paho-mqtt (for MQTT).  
+   - influxdb-client (for writing data to InfluxDB).  
+   - Whisper (speech-to-text).  
+
+System Requirements:  
+- Docker Engine and Docker Compose.  
+- Python 3.8 or newer.  
+- Arduino IDE for ESP8266 management.  
+
+Authors: @kwiatkowksijan, @Olesz96
